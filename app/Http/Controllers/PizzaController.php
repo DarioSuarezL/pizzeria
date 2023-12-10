@@ -20,7 +20,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pizza.create');
     }
 
     /**
@@ -28,7 +28,15 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+            'precio' => 'required|numeric',
+            'categoria_id' => 'required',
+            'tamano_id' => 'required',
+            'imagen' => 'required|image|max:2048'
+        ]);
+
+        dd($request->all());
     }
 
     /**

@@ -170,6 +170,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+
+        // Añadidos por mi
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
+
     ])->toArray(),
 
     /*

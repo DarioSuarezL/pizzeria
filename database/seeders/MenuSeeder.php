@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categoria;
 use App\Models\Pizza;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Tamano;
+use App\Models\Categoria;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class MenuSeeder extends Seeder
 {
@@ -23,13 +24,21 @@ class MenuSeeder extends Seeder
             'nombre' => 'Pizzas Normales'
         ]);
 
+        $pequeño = Tamano::create([
+            'nombre' => 'Pequeña'
+        ]);
+
+        $grande = Tamano::create([
+            'nombre' => 'Grande'
+        ]);
+
         //pizzas especiales
         Pizza::create([
             'nombre' => 'CHESSEBURGER - GRANDE',
             'precio' => 56.00,
             'imagen_url' => "https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101682/ChesseBurguer_w5hfyt.jpg",
             'descripcion' => 'CARNE MOLIDA, TOCINO Y CHEDDAR.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -38,7 +47,7 @@ class MenuSeeder extends Seeder
             'precio' => 32.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101682/ChesseBurguer_w5hfyt.jpg',
             'descripcion' => 'CARNE MOLIDA, TOCINO Y CHEDDAR.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -47,7 +56,7 @@ class MenuSeeder extends Seeder
             'precio' => 56.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101685/CuatroQuesos_guachl.jpg',
             'descripcion' => 'MOZZARELLA, CHEDDAR, REQUESÓN Y ROQUEFORT.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -56,7 +65,7 @@ class MenuSeeder extends Seeder
             'precio' => 32.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101685/CuatroQuesos_guachl.jpg',
             'descripcion' => 'MOZZARELLA, CHEDDAR, REQUESÓN Y ROQUEFORT.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -65,7 +74,7 @@ class MenuSeeder extends Seeder
             'precio' => 54.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101687/Strogonoff_aet15x.jpg',
             'descripcion' => 'POLLO, JAMÓN, PAPAS FRITAS Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -74,7 +83,7 @@ class MenuSeeder extends Seeder
             'precio' => 30.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101687/Strogonoff_aet15x.jpg',
             'descripcion' => 'POLLO, JAMÓN, PAPAS FRITAS Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -83,7 +92,7 @@ class MenuSeeder extends Seeder
             'precio' => 54.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101682/Carnivora_fkdn1k.jpg',
             'descripcion' => 'CARNE MOLIDA, JAMÓN, CHOCLO Y CHEDDAR.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -92,7 +101,7 @@ class MenuSeeder extends Seeder
             'precio' => 30.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101682/Carnivora_fkdn1k.jpg',
             'descripcion' => 'CARNE MOLIDA, JAMÓN, CHOCLO Y CHEDDAR.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -101,7 +110,7 @@ class MenuSeeder extends Seeder
             'precio' => 52.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101685/Pernil_oapxf1.jpg',
             'descripcion' => 'PERNIL DE CERDO, PIMENTÓN, CHOCLO Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -110,7 +119,7 @@ class MenuSeeder extends Seeder
             'precio' => 28.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101685/Pernil_oapxf1.jpg',
             'descripcion' => 'PERNIL DE CERDO, PIMENTÓN, CHOCLO Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -119,7 +128,7 @@ class MenuSeeder extends Seeder
             'precio' => 50.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101686/TresQuesos_ona1hf.jpg',
             'descripcion' => 'MOZZARELLA, CHEDDAR Y REQUESÓN.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -128,7 +137,7 @@ class MenuSeeder extends Seeder
             'precio' => 28.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101686/TresQuesos_ona1hf.jpg',
             'descripcion' => 'MOZZARELLA, CHEDDAR Y REQUESÓN.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $premium->id
         ]);
 
@@ -139,7 +148,7 @@ class MenuSeeder extends Seeder
             'precio' => 48.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101682/Calabresa_ow4yvl.jpg',
             'descripcion' => 'CALABRESA, MOZZARELLA, CHOCLO O ACEITUNAS.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -148,7 +157,7 @@ class MenuSeeder extends Seeder
             'precio' => 26.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101682/Calabresa_ow4yvl.jpg',
             'descripcion' => 'CALABRESA, MOZZARELLA, CHOCLO O ACEITUNAS.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -157,7 +166,7 @@ class MenuSeeder extends Seeder
             'precio' => 48.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101686/Americana_gcr3xy.jpg',
             'descripcion' => 'HUEVO, TOCINO Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -166,7 +175,7 @@ class MenuSeeder extends Seeder
             'precio' => 26.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101686/Americana_gcr3xy.jpg',
             'descripcion' => 'HUEVO, TOCINO Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -175,7 +184,7 @@ class MenuSeeder extends Seeder
             'precio' => 48.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101686/Peperoni_ahvta0.jpg',
             'descripcion' => 'PEPERONI Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -184,7 +193,7 @@ class MenuSeeder extends Seeder
             'precio' => 26.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101686/Peperoni_ahvta0.jpg',
             'descripcion' => 'PEPERONI Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -193,7 +202,7 @@ class MenuSeeder extends Seeder
             'precio' => 48.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101687/Vegetariana_wmjio1.jpg',
             'descripcion' => 'TOMATE, CHAMPIÑONES, PIMENTÓN, CHOCLO Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -202,7 +211,7 @@ class MenuSeeder extends Seeder
             'precio' => 26.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101687/Vegetariana_wmjio1.jpg',
             'descripcion' => 'TOMATE, CHAMPIÑONES, PIMENTÓN, CHOCLO Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -211,7 +220,7 @@ class MenuSeeder extends Seeder
             'precio' => 46.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101683/Hawaiana_tct2sz.jpg',
             'descripcion' => 'JAMÓN, PIÑA Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -220,7 +229,7 @@ class MenuSeeder extends Seeder
             'precio' => 24.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101683/Hawaiana_tct2sz.jpg',
             'descripcion' => 'JAMÓN, PIÑA Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -229,7 +238,7 @@ class MenuSeeder extends Seeder
             'precio' => 44.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101683/Clasica_zlmovf.jpg',
             'descripcion' => 'JAMÓN, CHOCLO Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -238,7 +247,7 @@ class MenuSeeder extends Seeder
             'precio' => 24.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101683/Clasica_zlmovf.jpg',
             'descripcion' => 'JAMÓN, CHOCLO Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -247,7 +256,7 @@ class MenuSeeder extends Seeder
             'precio' => 40.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101683/Margarita_e5usaj.jpg',
             'descripcion' => 'TOMATE Y MOZZARELLA.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -256,7 +265,7 @@ class MenuSeeder extends Seeder
             'precio' => 22.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101683/Margarita_e5usaj.jpg',
             'descripcion' => 'TOMATE Y MOZZARELLA.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -265,7 +274,7 @@ class MenuSeeder extends Seeder
             'precio' => 38.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101684/Economica_noy7za.jpg',
             'descripcion' => 'MOZZARELLA Y ORÉGANO.',
-            'tamano' => 'Grande',
+            'tamano_id' => $grande->id,
             'categoria_id' => $normales->id
         ]);
 
@@ -274,7 +283,7 @@ class MenuSeeder extends Seeder
             'precio' => 22.00,
             'imagen_url' => 'https://res.cloudinary.com/dt0pbqivj/image/upload/v1702101684/Economica_noy7za.jpg',
             'descripcion' => 'MOZZARELLA Y ORÉGANO.',
-            'tamano' => 'Pequeña',
+            'tamano_id' => $pequeño->id,
             'categoria_id' => $normales->id
         ]);
     }
