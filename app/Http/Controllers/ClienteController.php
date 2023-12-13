@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -60,6 +61,7 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        return redirect(route('clientes.index'))->with('success', 'Cliente eliminado exitosamente');
     }
 }
