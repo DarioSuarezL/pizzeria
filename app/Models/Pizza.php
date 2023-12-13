@@ -14,7 +14,7 @@ class Pizza extends Model
         'precio',
         'imagen_url',
         'descripcion',
-        'tamano',
+        'tamano_id',
         'categoria_id'
     ];
 }

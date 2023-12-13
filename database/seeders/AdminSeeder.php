@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cliente;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,11 +14,18 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $dario = User::create([
             'name' => 'Dario Suarez Lazarte',
             'email' => 'dsuarezlazarte@gmail.com',
             'password' => bcrypt('12345678'),
             'is_admin' => true
+        ]);
+
+        Cliente::create([
+            'ci_nit' => 'SIN NIT',
+            'user_id' => $dario->id,
+            'numeroTelf' => '65085392',
+            'direccion' => 'Av. Moscú Barrio Rivero, Calle Gaviota #18'
         ]);
 
         User::create([
@@ -32,27 +40,6 @@ class AdminSeeder extends Seeder
             'email' => 'alison@gmail.com',
             'password' => bcrypt('12345678'),
             'is_admin' => true
-        ]);
-
-        User::create([
-            'name' => 'Cliente 1',
-            'email' => 'cliente1@gmail.com',
-            'password' => bcrypt('12345678'),
-            'is_admin' => false
-        ]);
-
-        User::create([
-            'name' => 'Cliente 2',
-            'email' => 'cliente2@gmail.com',
-            'password' => bcrypt('12345678'),
-            'is_admin' => false
-        ]);
-
-        User::create([
-            'name' => 'Cliente 3',
-            'email' => 'cliente3@gmail.com',
-            'password' => bcrypt('12345678'),
-            'is_admin' => false
         ]);
     }
 }
