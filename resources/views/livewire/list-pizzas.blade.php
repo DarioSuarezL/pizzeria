@@ -24,6 +24,23 @@
                         <p class="text-white">+</p>
                         <x-car></x-car>
                     </x-button>
+
+                    @if (auth()->user()->is_admin)
+                    <div class="flex justify-around m-3">
+                        <div class="bg-green-800 p-2 rounded-lg">
+                            <a href="{{route('pizzas.edit', $pizza->id)}}">
+                                <p class="text-white"> Editar </p>
+                            </a>
+                        </div>
+
+                        <div class="bg-red-800 p-2 rounded-lg">
+                            <a href="">
+                                <p class="text-white"> Eliminar </p>
+                            </a>
+                        </div>
+                    </div>
+                    @endif
+
                 </div>
             </div>
         @empty

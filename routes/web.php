@@ -45,14 +45,9 @@ Route::get('/pizzas/create', [PizzaController::class, 'create'])
             ->name('pizzas.create')
             ->middleware('auth');
 
-// Route::post('/pizzas/store', [PizzaController::class, 'store'])
-//             ->name('pizzas.store')
-//             ->middleware('auth');
-
-// Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])
-//             ->name('pizzas.edit')
-//             ->middleware('auth');
-// PizzaController@index
+Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])
+            ->name('pizzas.edit')
+            ->middleware('auth');
 
 // Route::get('/pizzas/{id}', [PizzaController::class, 'show'])
 //             ->name('pizzas.show')

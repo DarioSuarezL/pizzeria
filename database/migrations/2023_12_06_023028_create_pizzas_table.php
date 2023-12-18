@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->foreignId('tamano_id')->constrained();
             $table->foreignId('categoria_id')->constrained();
+            $table->boolean('disponible')->default(true);
             $table->timestamps();
         });
     }
