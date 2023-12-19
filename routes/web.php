@@ -3,6 +3,8 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PizzaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConsumiServicioController;
+use App\Http\Controllers\PagoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +64,10 @@ Route::get('/clientes', [ClienteController::class, 'index'])
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])
             ->name('clientes.destroy')
             ->middleware('auth');
+
+Route::get('/pago',[PagoController::class, 'create'])->name('pagofacil.form')
+->middleware('auth');;
+Route::post('/consumirServicio',[ConsumiServicioController::class, 'RecolectarDatos'])->name('/consumirServicio')
+->middleware('auth');;
+Route::post('/consultar', [ConsumiServicioController::class, 'ConsultarEstado'])
+->middleware('auth');;

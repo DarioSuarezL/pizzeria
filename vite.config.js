@@ -7,10 +7,14 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/css/stylespagoform.css',
+                'resources/css/stylesguipagoform.css',
             ],
             refresh: [
                 ...refreshPaths,
                 'app/Livewire/**',
+                'resources/css/stylespagoform.css',
+                'resources/css/stylesguipagoform.css',
             ],
         }),
     ],
