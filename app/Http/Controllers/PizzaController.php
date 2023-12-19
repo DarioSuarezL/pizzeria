@@ -82,6 +82,7 @@ class PizzaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Pizza::destroy($id);
+        return redirect(route('pizzas.index'))->with('success', 'Pizza eliminada exitosamente');
     }
 }

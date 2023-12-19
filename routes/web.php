@@ -49,9 +49,9 @@ Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])
             ->name('pizzas.edit')
             ->middleware('auth');
 
-// Route::get('/pizzas/{id}', [PizzaController::class, 'show'])
-//             ->name('pizzas.show')
-//             ->middleware('auth');
+Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])
+            ->name('pizzas.destroy')
+            ->middleware('auth');
 
 
 

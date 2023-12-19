@@ -29,15 +29,17 @@
                     <div class="flex justify-around m-3">
                         <div class="bg-green-800 p-2 rounded-lg">
                             <a href="{{route('pizzas.edit', $pizza->id)}}">
-                                <p class="text-white"> Editar </p>
+                                <p class="text-white text-sm uppercase"> Editar </p>
                             </a>
                         </div>
 
-                        <div class="bg-red-800 p-2 rounded-lg">
-                            <a href="">
-                                <p class="text-white"> Eliminar </p>
-                            </a>
-                        </div>
+                        <form action="{{route('pizzas.destroy', $pizza->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <x-button class="mx-2">
+                                Eliminar
+                            </x-button>
+                        </form>
                     </div>
                     @endif
 

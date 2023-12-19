@@ -6,8 +6,7 @@
     </div>
 
     <div class="flex flex-col justify-center">
-        <form wire:submit.prevent='store'>
-            {{-- method="POST" action="{{route('pizzas.store')}}" enctype="multipart/form-data" --}}
+        <form wire:submit.prevent='update'>
             <div class="mt-5">
                 <x-label for="nombre" value="{{ __('Nombre') }}" />
                 <p class="text-sm">Procure poner el nombre con el tamaño</p>
@@ -20,7 +19,7 @@
                 <x-input id="precio" class="block mt-1 w-full" type="text" wire:model="precio" :value="old('precio')" placeholder="56.00"/>
             </div>
 
-            {{-- <div class="mt-5">
+            <div class="mt-5">
                 <x-label for="tamano" value="{{ __('Tamaño') }}" />
                 <select class="block mt-1 w-full rounded-lg" id="tamano_id" wire:model="tamano_id">
                     <option value="-1" hidden selected>- SELECCIONE -</option>
@@ -38,7 +37,7 @@
                     <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
             <div class="mt-5">
                 <x-label for="descripcion" value="{{ __('Descripción') }}" />
@@ -54,12 +53,19 @@
                 />
             </div>
 
+
+            <div class="mt-5">
+                <p class="inline bg-green-700 rounded-lg p-2 text-white">Foto actual:</p>
+                <img src="{{$foto_act}}" alt="" class="w-40 h-40">
+            </div>
+
             @if ($foto)
-                <div class="mt-5">
-                    <p class="inline bg-green-700 rounded-lg p-2 text-white">Previsualización de foto:</p>
-                    <img src="{{$foto->temporaryUrl()}}" alt="" class="w-40 h-40">
-                </div>
+            <div class="mt-5">
+                <p class="inline bg-green-700 rounded-lg p-2 text-white">Previsualización de foto nueva:</p>
+                <img src="{{$foto->temporaryUrl()}}" alt="" class="w-40 h-40">
+            </div>
             @endif
+
 
             <div class="flex justify-end">
                 <x-button class="mt-5">
