@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/urlcallback', [ConsumiServicioController::class, 'urlCallback']);
+Route::post('callback', [ConsumiServicioController::class, 'UrlCallback']);

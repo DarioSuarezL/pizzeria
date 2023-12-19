@@ -4,7 +4,7 @@
        
             <div class="container">
                 <h2>Registration Form</h2>
-                <form method="POST" action="{{ route('/consumirServicio') }}">
+                <form method="POST" action="{{ route('/consumirServicio') }}" id="FormCliente">
                     @csrf
 
 
@@ -30,8 +30,21 @@
                         <input type="email" name="tcCorreo" id="tcCorreo" placeholder="Correo" value="{{ $user->email }}" required>
                     </div>
                     <div class="form-group">
+                    <label for="PedidoDeVenta"> PedidoDeVenta: </label>
+                    <input type="text" name="PedidoDeVenta" id="PedidoDeVenta" value="grupo25sa-">
+                    </div>
+                    <div class="form-group">
                         <label for="monto">Monto</label>
                         <input type="text" name="tnMonto" id="tnMonto" placeholder="Costo Total" required>
+                    </div>
+                    <input type="hidden" name="Fecha" id="Fecha">
+                    <input type="hidden" name="Hora" id="Hora">
+                    <div class="form-group">
+                    <label for=""> MonedaVenta: </label>
+                    <select name="MonedaVenta" id="">
+                        <option value="2">Bs</option>
+                        <option value="1"> $u$</option>
+                    </select>
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">Tipo de Servicio</label>
@@ -49,7 +62,7 @@
                     </div>
                     <div class="form-group">
                         <label for="idSucursal">Pedido</label>
-                        <input type="text" name="taPedidoDetalle[0][Producto]">
+                        <input type="text" name="taPedidoDetalle[0][Producto] " id="Producto">
                     </div>
 
                     <div class="form-group">
@@ -107,16 +120,63 @@
 
                    
                     <button type="submit">Submit</button>
+
                 </form>
+
+   
+
+              <!--  <input type="button" name="" id="" value="Pagar Compra"  onclick="PrepararParametros()">-->
+
+<!-- Este es el formulario del boton de pago checkout 
+    que tiene los parametros que se envian al checkout  que son tcParametros  -  tcCommerceID -->
+<form   method="post" id="FormPagoFacilCheckout" style="display:none" 
+        action="https://checkout.pagofacil.com.bo/es/pay" enctype="multipart/form-data"  class="form">			
+    <input   name="tcParametros" id="tcParametros"  type="text"  value="" > 
+    <input   name="tcCommerceID"  id="tcCommerceID" type="text"  value=""  >
+    <input type="submit" class="btn btn-primary" id="btnpagar" value="">
+</form>
+
+
             </div>
          <div class=" grid grid-cols-2 ">
             <iframe name="QrImage" style="width:100%; height:495px"></iframe>
          </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script src="{{ asset('js/scripts.js') }}"></script>
+            <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script> 
+        <script src="{{ asset('js/jquery.min.js') }}" type="1e80906edbc96c168d73edb0-text/javascript"></script>
+        <script src="{{ asset('js/PagoFacilCheckoutClient.js') }}"></script> 
 
         </div>
     </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener el campo oculto
+    var fechaCampo = document.getElementById('Fecha');
+    var horaCampo = document.getElementById('Hora');
 
+    // Obtener la fecha y hora actual
+    var fechaActual = new Date();
+    var horaActual = new Date();
+
+    // Formatear la fecha y hora como desees (por ejemplo, formato YYYY-MM-DD y HH:mm:ss)
+    var fechaFormateada = fechaActual.toISOString().split('T')[0];
+    var horaFormateada = horaActual.toTimeString().split(' ')[0];
+
+    // Asignar la fecha y hora a los campos ocultos
+    fechaCampo.value = fechaFormateada;
+    horaCampo.value = horaFormateada;
+});
+</script>
+<script>
+    $(document).ready(function () {
+        // Obtener el valor del primer input
+        var valorPedido = $("#PedidoDeVenta").val();
+
+        // Asignar el mismo valor al segundo input
+        $("#Producto").val(valorPedido);
+    });
+</script>
 
 </x-app-layout>
