@@ -1,4 +1,5 @@
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+    <livewire:search-pizzas/>
     <div class="flex justify-between">
         <h1 class="mt-3 text-2xl font-medium text-gray-900">
             Menú de pizzas
@@ -47,7 +48,7 @@
             </div>
         @empty
 
-        <p class="bg-red-700 rounded-lg text-3xl text-white">NO TENEMOS MENÚ</p>
+        <p class="bg-red-700 rounded-lg p-2 text-white">No se encuentran pizzas con esos términos</p>
 
         @endforelse
     </div>

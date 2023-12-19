@@ -23,7 +23,7 @@
             <div class="mt-5">
                 <x-label for="tamano" value="{{ __('Tamaño') }}" />
                 <select class="block mt-1 w-full rounded-lg" id="tamano_id" wire:model="tamano_id">
-                    <option value="-1" hidden selected>- SELECCIONE -</option>
+                    <option hidden selected>- SELECCIONE -</option>
                     @foreach ($tamanos as $tamano)
                     <option value="{{$tamano->id}}">{{$tamano->nombre}}</option>
                     @endforeach
@@ -33,7 +33,7 @@
             <div class="mt-5">
                 <x-label for="categoria_id" value="{{ __('Categoría') }}" />
                 <select class="block mt-1 w-full rounded-lg" wire:model="categoria_id" id="categoria_id">
-                    <option value="-1" hidden selected>- SELECCIONE -</option>
+                    <option hidden selected>- SELECCIONE -</option>
                     @foreach ($categorias as $categoria)
                     <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                     @endforeach

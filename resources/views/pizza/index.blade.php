@@ -17,4 +17,6 @@
             </div>
         </div>
     </div>
+    {{-- <p>{{$visits}}</p> --}}
+    <x-visits> {{$visits->cant}} </x-visits>
 </x-app-layout>
