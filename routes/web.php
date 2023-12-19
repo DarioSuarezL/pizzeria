@@ -37,7 +37,7 @@ Route::middleware([
 
 Route::get('/pizzas', [PizzaController::class, 'index'])
             ->name('pizzas.index')
-            ->middleware('auth');
+            ->middleware('auth', 'visits');
 
 // Route::get('/pizzas/{id}', [PizzaController::class, 'show'])
 //             ->name('pizzas.show')->middleware('auth')
@@ -45,11 +45,11 @@ Route::get('/pizzas', [PizzaController::class, 'index'])
 
 Route::get('/pizzas/create', [PizzaController::class, 'create'])
             ->name('pizzas.create')
-            ->middleware('auth');
+            ->middleware('auth', 'visits');
 
 Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])
             ->name('pizzas.edit')
-            ->middleware('auth');
+            ->middleware('auth', 'visits');
 
 Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])
             ->name('pizzas.destroy')
@@ -59,7 +59,7 @@ Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])
 
 Route::get('/clientes', [ClienteController::class, 'index'])
             ->name('clientes.index')
-            ->middleware('auth');
+            ->middleware('auth', 'visits');
 
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])
             ->name('clientes.destroy')

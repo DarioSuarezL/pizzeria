@@ -6,8 +6,9 @@ use App\Models\Pizza;
 use App\Models\Tamano;
 use Livewire\Component;
 use App\Models\Categoria;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class FormPizzas extends Component
 {
@@ -44,14 +45,13 @@ class FormPizzas extends Component
     {
         $this->validate();
         $imagen_url = Cloudinary::upload($this->foto->getRealPath())->getSecurePath();
-
         Pizza::create([
-            'nombre' => $this->nombre,
+            'nombre' => Str::upper($this->nombre),
             'precio' => $this->precio,
             'categoria_id' => $this->categoria_id,
             'tamano_id' => $this->tamano_id,
             'imagen_url' => $imagen_url,
-            'descripcion' => $this->descripcion
+            'descripcion' => Str::upper($this->descripcion)
         ]);
 
         return redirect()->route('pizzas.index')->with('success','Pizza creada correctamente');

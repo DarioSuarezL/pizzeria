@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
 use App\Models\User;
+use App\Models\Visit;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -13,7 +14,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('cliente.index');
+        $visits = Visit::where(['page_name' => 'clientes.index'])->first();
+        return view('cliente.index', [
+            'visits' => $visits
+        ]);
     }
 
     /**

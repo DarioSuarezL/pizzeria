@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
+use App\Models\Visit;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,10 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        return view('pizza.index');
+        $visits = Visit::where(['page_name' => 'pizzas.index'])->first();
+        return view('pizza.index', [
+            'visits' => $visits
+        ]);
     }
 
     /**

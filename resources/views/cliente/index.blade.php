@@ -18,4 +18,5 @@
             </div>
         </div>
     </div>
+    <x-visits> {{$visits->cant}} </x-visits>
 </x-app-layout>
