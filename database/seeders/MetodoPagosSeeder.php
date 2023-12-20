@@ -15,6 +15,7 @@ class MetodoPagosSeeder extends Seeder
     {
         MetodoPago::create(['nombre' => 'Efectivo']);
         MetodoPago::create(['nombre' => 'Tarjeta de débito/crédito']);
-        MetodoPago::create(['nombre' => 'QR']);
+        MetodoPago::create(['nombre' => 'Tigo Money']);
+        MetodoPago::create(['nombre' => 'Tranferencias Bancos QR']);
     }
 }

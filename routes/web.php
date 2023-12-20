@@ -7,6 +7,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetallePedidoController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::get('/', function () {
 // ])->group(function () {
 // });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth', 'visits');
 
 
 
@@ -80,3 +81,12 @@ Route::get('/carrito', [DetallePedidoController::class, 'index'])
 Route::get('/cajero/view', function(){
     return view('cajero.view');
 })->name('cajero.view')->middleware('auth');
+
+
+Route::post('/api/callback', [PedidoController::class, 'callback'])
+            ->name('callback');
+
+
+Route::get('/pedidos', [PedidoController::class, 'index'])
+            ->name('pedidos.index')
+            ->middleware('auth','visits');

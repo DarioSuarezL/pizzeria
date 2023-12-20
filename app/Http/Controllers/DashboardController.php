@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Visit;
 use App\Models\Pedido;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class DashboardController extends Controller
         $cantAdmin = User::where('is_admin', true)->count();
         $cantClientes = Cliente::count();
         $cantCajeros = User::where('is_cajero', true)->count();
+        $visits = Visit::where(['page_name' => 'dashboard'])->first();
 
         $pizzaMasVendida = Pedido::with('detalles.pizza')
             ->get()
@@ -74,7 +76,8 @@ class DashboardController extends Controller
             'cantAdmin' => $cantAdmin,
             'cantCajeros' => $cantCajeros,
             'user_month_chart' => $user_month_chart,
-            'pedidos_month_chart' => $pedidos_month_chart
+            'pedidos_month_chart' => $pedidos_month_chart,
+            'visits' => $visits,
         ]);
     }
 }

@@ -9,7 +9,7 @@ class Pedido extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cliente_id', 'estado_id', 'total', 'metodo_pago_id'];
+    protected $fillable = ['cliente_id', 'estado_id', 'total', 'metodo_pago_id', 'pago_estados_id'];
 
 
     public function cliente(){
@@ -26,6 +26,10 @@ class Pedido extends Model
 
     public function metodoPago(){
         return $this->belongsTo(MetodoPago::class);
+    }
+
+    public function pagoestado(){
+        return $this->belongsTo(PagoEstado::class, 'pago_estados_id', 'id', 'pago_estados');
     }
 
 

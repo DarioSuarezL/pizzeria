@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             MetodoPagosSeeder::class,
             EstadosSeeder::class,
             CajerosSeeder::class,
+            PagoEstadosSeeder::class,
         ]);
     }
 }

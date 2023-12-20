@@ -35,12 +35,17 @@
             </p>
         </div>
 
+        @if($detalles != [])
         <div class="p-3">
-            <button>
-                {{-- <a href="{{route('order.create')}}" class="bg-green-800 hover:bg-green-700  font-bold py-2 px-4 rounded-lg">
-                    Realizar Pedido
-                </a> --}}
+            <button wire:click="checkout()" class="bg-green-800 p-2 text-white rounded-lg hover:bg-green-600">
+                Realizar pedido
             </button>
         </div>
+        @endif
     </div>
+    @if ($QR)
+    <div class="flex justify-center">
+        <img src="{{$QR}}" alt="">
+    </div>
+    @endif
 </div>

@@ -22,9 +22,9 @@ class AdminSeeder extends Seeder
         ]);
 
         Cliente::create([
-            'ci_nit' => 'SIN NIT',
+            'ci_nit' => '9005925',
             'user_id' => $dario->id,
-            'numeroTelf' => '65085392',
+            'numeroTelf' => 65085392,
             'direccion' => 'Av. Moscú Barrio Rivero, Calle Gaviota #18'
         ]);
 

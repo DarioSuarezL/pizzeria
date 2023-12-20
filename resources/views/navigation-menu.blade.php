@@ -12,12 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
                     @if (auth()->user()->hasCliente())
                     <x-nav-link href="{{ route('pizzas.index') }}" :active="request()->routeIs('pizzas.index')">
                         {{ __('Menú') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('detalle_pedido.index') }}" :active="request()->routeIs('detalle_pedido.index')">
                         {{ __('Carrito de compras') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('pedidos.index') }}" :active="request()->routeIs('pedidos.index')">
+                        {{ __('Historial de pedidos') }}
                     </x-nav-link>
                     @endif
                     @if (auth()->user()->is_admin)
@@ -164,6 +168,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('detalle_pedido.index') }}" :active="request()->routeIs('detalle_pedido.index')">
                 {{ __('Carrito de compras') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('pedidos.index') }}" :active="request()->routeIs('pedidos.index')">
+                {{ __('Historial de pedidos') }}
             </x-responsive-nav-link>
             @endif
             @if (auth()->user()->is_admin)

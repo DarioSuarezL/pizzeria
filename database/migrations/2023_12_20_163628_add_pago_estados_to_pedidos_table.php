@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('clientes', function (Blueprint $table) {
-            $table->bigInteger('ci_nit', false, true)->nullable()->after('user_id');
-
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->foreignId('pago_estados_id')->nullable()->constrained('pago_estados');
         });
     }
 
@@ -22,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('clientes', function (Blueprint $table) {
-            $table->dropColumn('ci_nit');
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->dropForeign(['pago_estados_id']);
         });
     }
 };

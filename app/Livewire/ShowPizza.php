@@ -26,7 +26,8 @@ class ShowPizza extends Component
                 'cliente_id' => auth()->user()->cliente->id,
                 'estado_id' => 1,
                 'total' => 0,
-                'metodo_pago_id' => 1
+                'metodo_pago_id' => 4,
+                'pago_estados_id' => 1,
             ]);
         }
 

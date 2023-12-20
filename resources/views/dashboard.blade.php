@@ -44,6 +44,7 @@
             </div>
         </div>
     </div>
+    <x-visits> {{$visits->cant}} </x-visits>
     @section('scripts')
     {!! $user_month_chart->renderChartJsLibrary() !!}
     {!! $user_month_chart->renderJs() !!}
