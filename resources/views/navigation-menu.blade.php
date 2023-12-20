@@ -21,6 +21,9 @@
                     <x-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('detalle_pedido.index') }}" :active="request()->routeIs('detalle_pedido.index')">
+                        {{ __('Carrito de compras') }}
+                    </x-nav-link>
                     <livewire:general-search>
                 </div>
             </div>
@@ -154,6 +157,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
                 {{ __('Clientes') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('detalle_pedido.index') }}" :active="request()->routeIs('detalle_pedido.index')">
+                {{ __('Carrito de compras') }}
             </x-responsive-nav-link>
             <livewire:general-search>
         </div>

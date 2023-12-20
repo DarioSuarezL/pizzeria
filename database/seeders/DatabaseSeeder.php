@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             AdminSeeder::class,
             ClienteSeeder::class,
+            MetodoPagosSeeder::class,
+            EstadosSeeder::class,
         ]);
     }
 }

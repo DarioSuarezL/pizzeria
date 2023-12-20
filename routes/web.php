@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ClienteController;
+use App\Models\DetallePedido;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\SearchController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DetallePedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +40,9 @@ Route::get('/pizzas', [PizzaController::class, 'index'])
             ->name('pizzas.index')
             ->middleware('auth', 'visits');
 
-// Route::get('/pizzas/{id}', [PizzaController::class, 'show'])
-//             ->name('pizzas.show')->middleware('auth')
-//             ->middleware('auth');
+Route::get('/pizzas/{pizza}', [PizzaController::class, 'show'])
+            ->name('pizzas.show')->middleware('auth')
+            ->middleware('auth');
 
 Route::get('/pizzas/create', [PizzaController::class, 'create'])
             ->name('pizzas.create')
@@ -67,4 +69,9 @@ Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])
 
 Route::get('/search/{query}', [SearchController::class, 'index'])
             ->name('search.index')
+            ->middleware('auth');
+
+
+Route::get('/carrito', [DetallePedidoController::class, 'index'])
+            ->name('detalle_pedido.index')
             ->middleware('auth');

@@ -19,4 +19,13 @@ class Cliente extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function pedidos(){
+        return $this->hasMany(Pedido::class);
+    }
+
+    public function hasCarrito(){
+        return $this->pedidos()->where('estado_id', 1)->first() ?? false;
+    }
+
 }
