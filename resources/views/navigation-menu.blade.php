@@ -21,6 +21,7 @@
                     <x-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
+                    <livewire:general-search>
                 </div>
             </div>
 
@@ -154,6 +155,7 @@
             <x-responsive-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
                 {{ __('Clientes') }}
             </x-responsive-nav-link>
+            <livewire:general-search>
         </div>
 
         <!-- Responsive Settings Options -->

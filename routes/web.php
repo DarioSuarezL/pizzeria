@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,4 +62,9 @@ Route::get('/clientes', [ClienteController::class, 'index'])
 
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])
             ->name('clientes.destroy')
+            ->middleware('auth');
+
+
+Route::get('/search/{query}', [SearchController::class, 'index'])
+            ->name('search.index')
             ->middleware('auth');

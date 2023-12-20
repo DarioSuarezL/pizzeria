@@ -17,19 +17,19 @@ class MenuSeeder extends Seeder
     {
 
         $premium = Categoria::create([
-            'nombre' => 'Pizzas Premium'
+            'nombre' => 'PREMIUM'
         ]);
 
         $normales = Categoria::create([
-            'nombre' => 'Pizzas Normales'
+            'nombre' => 'NORMALES'
         ]);
 
         $pequeño = Tamano::create([
-            'nombre' => 'Pequeña'
+            'nombre' => 'PEQUEÑA'
         ]);
 
         $grande = Tamano::create([
-            'nombre' => 'Grande'
+            'nombre' => 'GRANDE'
         ]);
 
         //pizzas especiales
