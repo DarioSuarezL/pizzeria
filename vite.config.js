@@ -7,16 +7,12 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/css/stylespagoform.css',
-                'resources/css/stylesguipagoform.css',
-                'resources/js/PagoFacilCheckoutClient.js',
+                'resources/css/dark.css'
             ],
             refresh: [
                 ...refreshPaths,
                 'app/Livewire/**',
-                'resources/css/stylespagoform.css',
-                'resources/css/stylesguipagoform.css',
-                'resources/js/PagoFacilCheckoutClient.js',
+                'resources/css/dark.css'
             ],
             
         }),

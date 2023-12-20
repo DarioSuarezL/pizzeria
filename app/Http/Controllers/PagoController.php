@@ -15,6 +15,7 @@ class PagoController extends Controller
         $phone = $user->cliente->numeroTelf;
         $ci=$user->cliente->ci_nit;
         $dir=$user->cliente->direccion;
+        $laQrImage = "";
 
         $fullName = explode(' ', $user->name);
 
@@ -23,6 +24,7 @@ class PagoController extends Controller
             'ci_nit'=>$ci,
             'numeroTelf' => $phone,
             'direccion'=>$dir,
+            'laQrImage' => $laQrImage
         ]);
     }
     public function transaccion(request $request)

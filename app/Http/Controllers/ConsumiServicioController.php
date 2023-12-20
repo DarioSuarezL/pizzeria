@@ -11,6 +11,7 @@ class ConsumiServicioController extends Controller
     public function RecolectarDatos(Request $request){
        
         try {
+            
             $lcComerceID           = "d029fa3a95e174a19934857f535eb9427d967218a36ea014b70ad704bc6c8d1c";
             $lnMoneda              = 2;
             $lnTelefono            = $request->tnTelefono;

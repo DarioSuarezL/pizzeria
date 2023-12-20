@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -17,16 +16,18 @@
 
         <!-- Styles -->
         @livewireStyles
+                <!-- Agrega aquí tus estilos específicos para el tema oscuro -->
+              
     </head>
-    <body class="font-sans antialiased">
+    <body class="dark font-sans antialiased">
         <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-800 text-white">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-gray-900 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -35,15 +36,12 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+            @yield('content')
             </main>
         </div>
 
         @stack('modals')
 
         @livewireScripts
-        <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script> 
-        <script src="{{ asset('js/jquery.min.js') }}" type="1e80906edbc96c168d73edb0-text/javascript"></script>
-        <script src="{{ asset('js/PagoFacilCheckoutClient.js') }}"></script> 
     </body>
 </html>

@@ -11,8 +11,7 @@ class ListPizzas extends Component
 {
 
     use WithPagination;
-
-
+    public $theme = 'default';
     protected $listeners = ['sendData' => 'searchPizzas'];
 
     public $termino;
@@ -41,4 +40,18 @@ class ListPizzas extends Component
 
         return view('livewire.list-pizzas', compact('pizzas'));
     }
+
+
+
+    public function mount()
+    {
+        $this->theme = session('theme', 'dark'); // Cambia 'dark' al tema que desees establecer como predeterminado.
+    }
+    public function changeTheme($newTheme)
+    {
+        $this->theme = $newTheme;
+    }
+
+    
+    
 }

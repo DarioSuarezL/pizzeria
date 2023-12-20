@@ -31,8 +31,12 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        // Lógica para determinar si el modo oscuro está habilitado
+        $darkMode = session('darkMode', false);
+
+        return view('dashboard', compact('darkMode'));
     })->name('dashboard');
+    
 });
 
 
@@ -71,8 +75,9 @@ Route::get('/pago',[PagoController::class, 'create'])->name('pagofacil.form')
 ->middleware('auth');
 Route::post('/consumirServicio',[ConsumiServicioController::class, 'RecolectarDatos'])->name('/consumirServicio')
 ->middleware('auth');
-Route::post('/consultar', [ConsumiServicioController::class, 'ConsultarEstado'])
+Route::post('/generarqr',[PagoFacilCheckoutClient::class, 'Encript'])->name('/generarqr')
 ->middleware('auth');
+
 Route::post('/callback', [ConsumiServicioController::class, 'UrlCallback']);
 //------------------------------------------PAGOFACILCHECKOUT----------------------------------------
 

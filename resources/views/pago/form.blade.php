@@ -3,123 +3,106 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
        
             <div class="container">
-                <h2>Registration Form</h2>
-                <form method="POST" action="{{ route('/consumirServicio') }}" id="FormCliente">
+            <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Checkout') }}
+        </h2>
+    </x-slot>
+                <form method="POST" action="{{ route('/generarqr') }}" id="FormCliente">
                     @csrf
 
 
 
                     <!-- PagoFacil API service fields -->
-
+            <div class="md:grid md:grid-cols-3 gap-5">
+                <div class="mb-12">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label><!--RazonSocial-->
-                        <input type="text" name="tcRazonSocial" id="tcRazonSocial" placeholder="Nombre" value="{{ $user->name }}" required>
+                        <x-label for="nombre">Nombre</x-label><!--RazonSocial-->
+                        <x-input type="text" name="tcRazonSocial" id="tcRazonSocial" placeholder="Nombre" value="{{ $user->name }}" class="w-full" required/>
                     </div>
-
+            
                     <div class="form-group">
-                        <label for="apellidos">CI/NIT</label>
-                        <input type="text" name="tcCiNit" id="tcCiNit" placeholder="numero de CI/NIT" value="{{ $ci_nit}}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="text" name="tnTelefono" id="tnTelefono"
-                            value="{{ $numeroTelf = $user->cliente ? $user->cliente->numeroTelf : null; }}" required>
+                        <x-label for="apellidos">CI/NIT</x-label>
+                        <x-input type="text" name="tcCiNit" id="tcCiNit" placeholder="numero de CI/NIT" value="{{ $ci_nit}}" class="w-full"  required/>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo</label>
-                        <input type="email" name="tcCorreo" id="tcCorreo" placeholder="Correo" value="{{ $user->email }}" required>
+                        <x-label for="telefono">Teléfono</x-label>
+                        <x-input type="text" name="tnTelefono" id="tnTelefono"
+                            value="{{ $numeroTelf = $user->cliente->numeroTelf }}" class="w-full"  required/>
                     </div>
                     <div class="form-group">
-                    <label for="PedidoDeVenta"> PedidoDeVenta: </label>
-                    <input type="text" name="PedidoDeVenta" id="PedidoDeVenta" value="grupo25sa-">
+                        <x-label for="email">Correo</x-label>
+                        <x-input type="email" name="tcCorreo" id="tcCorreo" placeholder="Correo" value="{{ $user->email }}" class="w-full" required/>
                     </div>
                     <div class="form-group">
-                        <label for="monto">Monto</label>
-                        <input type="text" name="tnMonto" id="tnMonto" placeholder="Costo Total" required>
+                    <x-label for="PedidoDeVenta"> PedidoDeVenta: </x-label>
+                    <x-input type="text" name="PedidoID" id="PedidoDeVenta" value="grupo25sa-" class="w-full" />
                     </div>
-                    <input type="hidden" name="Fecha" id="Fecha">
-                    <input type="hidden" name="Hora" id="Hora">
                     <div class="form-group">
-                    <label for=""> MonedaVenta: </label>
+                        <x-label for="monto">Monto</x-label>
+                        <x-input type="text" name="tnMonto" id="tnMonto" placeholder="Costo Total" class="w-full" required/>
+                    </div>
+                    <x-input type="hidden" name="Fecha" id="Fecha"/>
+                    <x-input type="hidden" name="Hora" id="Hora"/>
+                    <div class="form-group">
+                    <x-label for=""> MonedaVenta: </x-label>
                     <select name="MonedaVenta" id="">
                         <option value="2">Bs</option>
                         <option value="1"> $u$</option>
                     </select>
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Tipo de Servicio</label>
+                                <x-label class="form-control-label px-3">Tipo de Servicio</x-label>
                                 <select name="tnTipoServicio" class="form-control">
                                     <option value="1">Servicio QR</option>
                                     <option value="2">Tigo Money</option>
                                 </select>
                             </div>
-                    <div class="containercard">
-          
-
-                    <div class="form-group">
-                        <label for="idSucursal">Serial</label>
-                        <input type="text" name="taPedidoDetalle[0][Serial]">
-                    </div>
-                    <div class="form-group">
-                        <label for="idSucursal">Pedido</label>
-                        <input type="text" name="taPedidoDetalle[0][Producto] " id="Producto">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="idUsuario">Cantidad</label>
-                        <input type="text" name="taPedidoDetalle[0][Cantidad]">
-                    </div>
-                    <div class="form-group">
-                        <label for="idUsuario">Precio</label>
-                        <input type="text" name="taPedidoDetalle[0][Precio]">
-                    </div>
-                    <div class="form-group">
-                        <label for="idUsuario">Descuento</label>
-                        <input type="text" name="taPedidoDetalle[0][Descuento]">
-                    </div>
-                    <div class="form-group">
-                        <label for="idUsuario">Total</label>
-                        <input type="text" name="taPedidoDetalle[0][Total]">
-                    </div>
-                      <!--  <div class="card">
-                            <div class="card-front">
-
-                           
-                                <div class="card-details">
-                                    <div class="form-group">
-                                        <label for="card_number">Numero de tarjeta</label>
-                                        <input type="text" name="card_number" id="card_number" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="expiration_date">Expiracion</label>
-                                                <input type="text" name="expiration_date" id="expiration_date"
-                                                    placeholder="MM/YY" required>
-                                            </div>
-                                            <div class="col">
-                                                <label for="cvt">CVT</label>
-                                                <input type="text" name="cvt" id="cvt" required>
-                                            </div>
-                                            <div class="col">
-                                                <label for="cp">CP</label>
-                                                <input type="text" name="cp" id="cp" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group" style="padding: 30px;">
+                            <x-button type="submit">Submit</x-button>
                             </div>
-                        </div>-->
-
+                            </div>
+           
+                
+                <div class="mb-5">
+                    <div class="form-group">
+                        <x-label for="idSucursal">Serial</x-label>
+                        <x-input type="text" name="taPedidoDetalle[0][Serial]"/>
+                    </div>
+                    <div class="form-group">
+                        <x-label for="idSucursal">Pedido</x-label>
+                        <x-input type="text" name="taPedidoDetalle[0][Producto] " id="Producto"/>
                     </div>
 
+                    <div class="form-group">
+                        <x-label for="idUsuario">Cantidad</x-label>
+                        <x-input type="text" name="taPedidoDetalle[0][Cantidad]"/>
+                    </div>
+                    <div class="form-group">
+                        <x-label for="idUsuario">Precio</x-label>
+                        <x-input type="text" name="taPedidoDetalle[0][Precio]"/>
+                    </div>
+                    <div class="form-group">
+                        <x-label for="idUsuario">Descuento</x-label>
+                        <x-input type="text" name="taPedidoDetalle[0][Descuento]"/>
+                    </div>
+                    <div class="form-group">
+                        <x-label for="idUsuario">Total</x-label>
+                        <x-input type="text" name="taPedidoDetalle[0][Total]"/>
+                    </div>
+           
 
+                    </div>
+                 
+                    <div class="mb-5">
+                    <img src="{{ $laQrImage }}" alt="QR Code Image">
+                    </div>
+                    </div>
                     
                    
 
                    
-                    <button type="submit">Submit</button>
+                    
 
                 </form>
 
