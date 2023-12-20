@@ -26,8 +26,28 @@
                             <p>Cantidad de cajeros: <span>{{$cantCajeros}}</span></p>
                         </div>
                     </div>
+                    <div class="flex">
+                        <div class="mt-5 p-3 rounded-lg">
+                            <h3 class="font-semibold text-lg">
+                                {{$user_month_chart->options['chart_title']}}
+                            </h3>
+                                {!! $user_month_chart->renderHtml() !!}
+                        </div>
+                        <div class="mt-5 p-3 rounded-lg">
+                            <h3 class="font-semibold text-lg">
+                                {{$pedidos_month_chart->options['chart_title']}}
+                            </h3>
+                                {!! $pedidos_month_chart->renderHtml() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @section('scripts')
+    {!! $user_month_chart->renderChartJsLibrary() !!}
+    {!! $user_month_chart->renderJs() !!}
+    {!! $pedidos_month_chart->renderChartJsLibrary() !!}
+    {!! $pedidos_month_chart->renderJs() !!}
+    @endsection
 </x-app-layout>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
-use App\Models\Pedido;
 use App\Models\User;
+use App\Models\Pedido;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
@@ -45,13 +46,35 @@ class DashboardController extends Controller
             ->sortBy('total_pedidos')->first();
 
 
+        $user_month = [
+            'chart_title' => 'Usuarios por mes',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\User',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'bar',
+        ];
+        $user_month_chart = new LaravelChart($user_month);
+
+        $pedidos_month = [
+            'chart_title' => 'Pedidos por mes',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Pedido',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'bar',
+        ];
+        $pedidos_month_chart = new LaravelChart($pedidos_month);
+
         return view('dashboard',[
             'cantUser' => $cantUser,
             'cantClientes' => $cantClientes,
             'pizzaMasVendida' => $pizzaMasVendida,
             'pizzaMenosVendida' => $pizzaMenosVendida,
             'cantAdmin' => $cantAdmin,
-            'cantCajeros' => $cantCajeros
+            'cantCajeros' => $cantCajeros,
+            'user_month_chart' => $user_month_chart,
+            'pedidos_month_chart' => $pedidos_month_chart
         ]);
     }
 }
