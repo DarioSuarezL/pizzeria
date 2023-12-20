@@ -75,3 +75,8 @@ Route::get('/search/{query}', [SearchController::class, 'index'])
 Route::get('/carrito', [DetallePedidoController::class, 'index'])
             ->name('detalle_pedido.index')
             ->middleware('auth');
+
+
+Route::get('/cajero/view', function(){
+    return view('cajero.view');
+})->name('cajero.view')->middleware('auth');

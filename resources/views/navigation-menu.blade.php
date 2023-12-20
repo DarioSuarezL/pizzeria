@@ -27,6 +27,11 @@
                     </x-nav-link>
                     <livewire:general-search>
                     @endif
+                    @if (auth()->user()->is_cajero)
+                    <x-nav-link href="{{ route('cajero.view') }}" :active="request()->routeIs('cajero.view')">
+                        {{ __('Cajero') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -166,6 +171,11 @@
                 {{ __('Clientes') }}
             </x-responsive-nav-link>
             <livewire:general-search>
+            @endif
+            @if (auth()->user()->is_cajero)
+                <x-responsive-nav-link href="{{ route('cajero.view') }}" :active="request()->routeIs('cajero.view')">
+                    {{ __('Cajero') }}
+                </x-responsive-nav-link>
             @endif
         </div>
 
