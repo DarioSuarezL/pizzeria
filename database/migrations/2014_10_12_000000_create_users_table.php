@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->boolean('is_admin')->default(false)->nullable();
+            $table->boolean('is_cajero')->default(false)->nullable();
             $table->timestamps();
         });
     }

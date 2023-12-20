@@ -59,8 +59,9 @@ class PizzaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pizza $pizza)
+    public function show(string $id)
     {
+        $pizza = Pizza::find($id);
         return view('pizza.show', compact('pizza'));
     }
 

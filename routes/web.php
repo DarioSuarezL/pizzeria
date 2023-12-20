@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetallePedidoController;
 
 /*
@@ -24,15 +25,14 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+// });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 
@@ -40,20 +40,20 @@ Route::get('/pizzas', [PizzaController::class, 'index'])
             ->name('pizzas.index')
             ->middleware('auth', 'visits');
 
-Route::get('/pizzas/{pizza}', [PizzaController::class, 'show'])
-            ->name('pizzas.show')->middleware('auth')
-            ->middleware('auth');
-
 Route::get('/pizzas/create', [PizzaController::class, 'create'])
             ->name('pizzas.create')
-            ->middleware('auth', 'visits');
+            ->middleware('auth');
 
 Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])
             ->name('pizzas.edit')
-            ->middleware('auth', 'visits');
+            ->middleware('auth');
 
-Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])
+Route::delete('/pizzas/{id}/destroy', [PizzaController::class, 'destroy'])
             ->name('pizzas.destroy')
+            ->middleware('auth');
+
+Route::get('/pizzas/{id}/show', [PizzaController::class, 'show'])
+            ->name('pizzas.show')->middleware('auth')
             ->middleware('auth');
 
 

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ClienteSeeder::class,
             MetodoPagosSeeder::class,
             EstadosSeeder::class,
+            CajerosSeeder::class,
         ]);
     }
 }

@@ -14,14 +14,14 @@
             <div class="bg-white m-2 rounded-lg flex border">
                 <img src="{{$pizza->imagen_url}}" class="rounded-l-lg" width="200" alt="{{$pizza->nombre}}">
                 <div>
-                    <a class=" pt-3 px-3 hover:text-xl font-bold hover:cursor-pointer" href="{{route('pizzas.show', $pizza)}}">{{$pizza->nombre}}</a>
+                    <a class=" pt-3 px-3 hover:text-xl font-bold hover:cursor-pointer" href="{{route('pizzas.show', $pizza->id)}}">{{$pizza->nombre}}</a>
                     <p class=" px-3"><span class="font-bold">Precio:</span> {{$pizza->precio}} Bs.</p>
                     <p class=" px-3 lowercase">
                         <span class="font-bold capitalize">Descripción: </span>
                         {{$pizza->descripcion}}
                     </p>
 
-                    <a class="m-3 bg-red-800 hover:bg-red-700 p-5 inline-block rounded-lg" href="{{route('pizzas.show', $pizza)}}" >
+                    <a class="m-3 bg-red-800 hover:bg-red-700 p-5 inline-block rounded-lg" href="{{route('pizzas.show', $pizza->id)}}" >
                         <div class="flex justify-center">
                             <p class="text-white">+</p>
                             <x-car></x-car>
