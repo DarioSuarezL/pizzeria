@@ -4,6 +4,9 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConsumiServicioController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PagoFacilCheckoutClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +66,21 @@ Route::get('/clientes', [ClienteController::class, 'index'])
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])
             ->name('clientes.destroy')
             ->middleware('auth');
+
+Route::get('/pago',[PagoController::class, 'create'])->name('pagofacil.form')
+->middleware('auth');
+Route::post('/consumirServicio',[ConsumiServicioController::class, 'RecolectarDatos'])->name('/consumirServicio')
+->middleware('auth');
+Route::post('/consultar', [ConsumiServicioController::class, 'ConsultarEstado'])
+->middleware('auth');
+Route::post('/callback', [ConsumiServicioController::class, 'UrlCallback']);
+//------------------------------------------PAGOFACILCHECKOUT----------------------------------------
+
+// esta ruta es la vista inicial, que muestra un formulario basico para datos del cliente
+Route::get('PagoFacilCheckout',  [PagoFacilCheckoutClient::class, 'inicio']);
+
+//esta ruta recibe los parametros del formulario inicial del cliente y pasa a encriptar los datos antes de enviarlos para ser procesados en PagoFacil Bolivia
+Route::post('PagoFacilCheckoutEncript', [PagoFacilCheckoutClient::class, 'Encript']);
 
 
 Route::get('/search/{query}', [SearchController::class, 'index'])
